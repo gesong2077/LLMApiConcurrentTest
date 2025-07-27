@@ -1,0 +1,36 @@
+# LLM API并发测试配置文件 / LLM API Concurrent Test Configuration
+# 修改此文件来配置你的测试参数 / Modify this file to configure your test parameters
+
+# 并发请求数量 (1-20) / Number of concurrent requests (1-20)
+concurrent_num: 2
+
+# API基础URL / API Base URL
+# 示例 / Examples: 
+#   - https://api.openai.com/v1
+#   - https://your-custom-api.com/v1
+baseurl: "https://api.openai.com/v1"
+
+# API密钥 (如果为空则跳过认证) / API Key (skip authentication if empty)
+# 获取你的API密钥 / Get your API key from:
+# OpenAI: https://platform.openai.com/api-keys
+api_key: "sk-xxxxxxxx"
+
+# 模型名称 / Model Name
+# 常见模型 / Common models:
+#   - gpt-4o-mini
+#   - gpt-4o  
+#   - gpt-3.5-turbo
+#   - claude-3-sonnet-20240229
+model_name: "gpt-3.5-turbo"
+
+# 超时时间(1-120秒，默认10秒) / Timeout in seconds (1-120s, default 10s)
+# 用于控制每个请求的最大等待时间 / Controls maximum wait time for each request
+# 重要：故意设置较短的超时时间，确保在AI回复完成前就中断请求 / Important: Intentionally set short timeout to interrupt before AI completes response
+# 目的：防止部分请求先结束导致其他请求速度波动，保证并发测试数据准确性 / Purpose: Prevent some requests finishing early causing speed fluctuation in others, ensuring accurate concurrent test data
+timeoutsec: 10
+
+# 语言设置 / Language Setting
+# 可选值 / Available options: 
+#   - cn: 中文输出 / Chinese output
+#   - en: English output / 英文输出
+language: "en"
